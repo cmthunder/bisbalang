@@ -27,36 +27,8 @@ function run()
         else if(wordA == "ven" && wordB == "ven") data[pointer] = (data[pointer] == 0) ? 255 : data[pointer] - 1;
         else if(wordA == "ven" && wordB == "camina") document.getElementById("outputTextbox").value += String.fromCharCode(data[pointer]);
         else if(wordA == "camina" && wordB == "ven") data[pointer] = document.getElementById("programInputTextbox").value[inputPointer++].charCodeAt(0);
-        else if(wordA == "ven" && wordB == "y")
-        {
-            if(data[pointer] == 0)
-            {
-                while(!(program[i] == "y" && program[i+1] == "ven"))
-                {
-                    i += 2;
-                    if(i >= program.length)
-                    {
-                        console.log("Ran out of loop.");
-                        return;
-                    }
-                }
-            }
-        }
-        else if(wordA == "y" && wordB == "ven")
-        {
-            if(data[pointer] != 0)
-                {
-                    while(!(program[i] == "ven" && program[i+1] == "y"))
-                    {
-                        i -= 2;
-                        if(i < 0)
-                        {
-                            console.log("Ran out of loop.");
-                            return;
-                        }
-                    }
-                }
-        }
+        else if(wordA == "ven" && wordB == "y") if(data[pointer] == 0) while(!(program[i] == "y" && program[i+1] == "ven")) i += 2;
+        else if(wordA == "y" && wordB == "ven") if(data[pointer] != 0) while(!(program[i] == "ven" && program[i+1] == "y")) i -= 2;
         else
         {
             document.getElementById("outputTextbox").value = "Error: Unknown instruction at word " + i.toString() + ".";
